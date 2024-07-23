@@ -1,0 +1,10 @@
+streamlit
+pymongo
+python-pymongo
+pandas
+numpy
+scikit-learn
+paho-mqtt
+json
+message
+requests
