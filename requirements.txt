@@ -1,4 +1,4 @@
-
+streamlit
 pip===24.1.2
 pymongo
 pandas
@@ -7,3 +7,4 @@ scikit-learn
 paho-mqtt
 message
 requests
+observable
