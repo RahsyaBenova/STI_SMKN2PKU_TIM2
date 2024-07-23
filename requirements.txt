@@ -4,6 +4,5 @@ pandas
 numpy
 scikit-learn
 paho-mqtt
-json
 message
 requests
