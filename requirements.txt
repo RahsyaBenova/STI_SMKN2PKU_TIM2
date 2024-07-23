@@ -1,4 +1,4 @@
-streamlit
+streamlit===24.1.2
 pymongo
 pandas
 numpy
