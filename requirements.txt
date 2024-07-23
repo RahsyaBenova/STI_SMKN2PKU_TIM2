@@ -3,6 +3,5 @@ pandas
 numpy
 scikit-learn
 paho-mqtt
-message
 requests
 datetime
