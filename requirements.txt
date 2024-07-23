@@ -5,3 +5,4 @@ scikit-learn
 paho-mqtt
 requests
 datetime
+streamlit_chat
