@@ -32,7 +32,7 @@
     <a href="https://github.com/RahsyaBenova/STI_SMKN2PKU_TIM2/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/RahsyaBenova/STI_SMKN2PKU_TIM2/">View Demo</a>
+    <a href="https://savaqua.streamlit.app">View Demo</a>
     ·
     <a href="https://github.com/RahsyaBenova/STI_SMKN2PKU_TIM2//issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
     ·
