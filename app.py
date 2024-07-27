@@ -1,6 +1,6 @@
 import streamlit as st
 from pymongo import MongoClient
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
@@ -51,7 +51,7 @@ mqtt_client.loop_start()
 valve_state = False
 
 # Set IP ESP32 
-ESP32_IP = 'https://b181-140-213-159-175.ngrok-free.app'
+ESP32_IP = 'https://115a-36-68-26-155.ngrok-free.app/'
 
 # Fetch total volume from MongoDB (from history collection)
 def fetch_total_volume():
@@ -62,7 +62,6 @@ def fetch_total_volume():
 def fetch_all_data():
     return pd.DataFrame(list(history_collection.find({}, {"_id": 0})))
 
-
 # Fetch master data settings from MongoDB
 def fetch_master_data():
     master_data = master_data_collection.find_one()
@@ -72,6 +71,7 @@ def fetch_master_data():
             master_data.get("tank_size", 1000.0)
         )
     return 1.0, 1000.0
+
 # Update master data settings in MongoDB
 def update_master_data(price_per_liter, tank_size):
     master_data_collection.update_one(
@@ -112,6 +112,16 @@ def predict_usage_category(model, X_test):
 # Calculate predicted total bill based on predicted volume and price per liter
 def predict_total_bill(predicted_volume, price_per_liter):
     return predicted_volume * price_per_liter
+
+# Predict future water usage
+def predict_future_usage(model, days=7):
+    future_dates = [datetime.now() + timedelta(days=i) for i in range(1, days + 1)]
+    future_data = pd.DataFrame({
+        'day_of_week': [date.weekday() for date in future_dates],
+        'hour_of_day': [12 for _ in future_dates]  # Assuming predictions are for the average hour of the day
+    })
+    future_volumes = model.predict(future_data)
+    return future_dates, future_volumes
 
 # Dashboard page (updated to fetch the correct number of values from master data)
 def dashboard_page():
@@ -156,6 +166,22 @@ def dashboard_page():
     # Display water usage data in a line chart
     st.write("## Water Usage Chart")
     st.line_chart(data.set_index('timestamp')[['total_volume']])
+
+    # Predict future usage
+    if not data.empty:
+        processed_data = preprocess_data(data)
+        model, X_test, y_test = train_regression_model(processed_data)
+        usage_category = predict_usage_category(model, X_test)
+        future_dates, future_volumes = predict_future_usage(model, days=7)
+        future_usage_df = pd.DataFrame({
+            'Date': future_dates,
+            'Predicted Volume (L)': future_volumes,
+            'Usage Category': np.where(future_volumes >= np.mean(future_volumes), 'Boros', 'Hemat')
+        })
+
+        st.write("## Future Water Usage Predictions")
+        st.table(future_usage_df[['Date', 'Predicted Volume (L)', 'Usage Category']])
+
 def history_page():
     st.title("Water Usage History")
     st.write("## History")
