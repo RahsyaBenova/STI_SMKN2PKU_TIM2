@@ -369,7 +369,7 @@ def chatbot_page():
         water_usage = {
             "cuci tangan": 2,
             "cuci piring": 15,
-            "menyiram tanaman": 10,
+            "menyiram tanaman": 2,
             "cuci mobil": 150,
             "memasak": 5,
             "mencuci baju": 50,
