@@ -51,7 +51,7 @@ mqtt_client.loop_start()
 valve_state = False
 
 # Set IP ESP32 
-ESP32_IP = 'https://66d2-36-68-30-79.ngrok-free.app'
+ESP32_IP = 'https://8dd8-112-215-174-228.ngrok-free.app'
 
 # Fetch total volume from MongoDB (from history collection)
 def fetch_total_volume():
