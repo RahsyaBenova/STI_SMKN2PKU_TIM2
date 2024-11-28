@@ -23,7 +23,6 @@ background_image = '''
 </style>
 '''
 
-
 st.markdown(background_image, unsafe_allow_html=True)
 
 # MongoDB settings
@@ -367,28 +366,28 @@ def chatbot_page():
         st.session_state.messages.append({"role": "user", "content": user_input})
         
         # Define typical water usage for activities
-         water_usage = {
-            “hand washing": 2,
-            “dishwashing": 15,
-            “watering plants": 10,
-            “car wash": 150,
-            “cooking": 5,
-            “washing clothes": 50,
-            “cleaning the floor": 20,
-            “filling the swimming pool": 1000,
-            “wash motorcycle": 50,
-            “clean glass": 5,
-            “washing tableware": 10,
-            “shower": 20
+        water_usage = {
+            "hand washing": 2,
+            "dishwashing": 15,
+            "watering plants": 10,
+            "car wash": 150,
+            "cooking": 5,
+            "washing clothes": 50,
+            "cleaning the floor": 20,
+            "filling the swimming pool": 1000,
+            "wash motorcycle": 50,
+            "clean glass": 5,
+            "washing tableware": 10,
+            "shower": 20
             
         }
-
         
         # Bot response logic
         bot_response = "Maaf, saya tidak mengerti. Coba jelaskan aktivitas Anda."
+        bot_response = "Sorry, I don't understand. Please explain your Activity."
         for activity, usage in water_usage.items():
             if activity in user_input.lower():
-                bot_response = f"Untuk {activity}, biasanya diperlukan sekitar {usage} liter air."
+                bot_response = f"Usually it needed {usage} liter for {activity}, ."
                 break
         
         st.session_state.messages.append({"role": "bot", "content": bot_response})
