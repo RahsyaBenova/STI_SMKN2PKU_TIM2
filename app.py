@@ -383,7 +383,6 @@ def chatbot_page():
             
         }
 
-Translated with DeepL.com (free version)
         
         # Bot response logic
         bot_response = "Maaf, saya tidak mengerti. Coba jelaskan aktivitas Anda."
