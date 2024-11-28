@@ -11,17 +11,18 @@ from streamlit_chat import message
 import requests
 
 # Set the background image
-background_image = """
+background_image = '''
 <style>
-[data-testid="stAppViewContainer"] > .main {
-    background-image: url("https://c4.wallpaperflare.com/wallpaper/315/39/662/waterdrop-droplet-water-drop-wallpaper-preview.jpg");
-    background-size: 100vw 100vh;  # This sets the size to cover 100% of the viewport width and height
-    background-position: center;  
-    background-repeat: no-repeat;
-    opacity: 0.9;
-}
+    .stApp{
+        background-image: url("https://c4.wallpaperflare.com/wallpaper/315/39/662/waterdrop-droplet-water-drop-wallpaper-preview.jpg");
+        background-size: cover;
+    }
+    [data-testid="stBottom"] > div {
+        background: transparent;
+    }
 </style>
-"""
+'''
+
 
 st.markdown(background_image, unsafe_allow_html=True)
 
