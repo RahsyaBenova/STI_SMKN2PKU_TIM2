@@ -367,21 +367,23 @@ def chatbot_page():
         st.session_state.messages.append({"role": "user", "content": user_input})
         
         # Define typical water usage for activities
-        water_usage = {
-            "cuci tangan": 2,
-            "cuci piring": 15,
-            "menyiram tanaman": 2,
-            "cuci mobil": 150,
-            "memasak": 5,
-            "mencuci baju": 50,
-            "membersihkan lantai": 20,
-            "mengisi kolam renang": 1000,
-            "cuci motor": 50,
-            "membersihkan kaca": 5,
-            "mencuci peralatan makan": 10,
-            "mandi" : 20
+         water_usage = {
+            “hand washing": 2,
+            “dishwashing": 15,
+            “watering plants": 10,
+            “car wash": 150,
+            “cooking": 5,
+            “washing clothes": 50,
+            “cleaning the floor": 20,
+            “filling the swimming pool": 1000,
+            “wash motorcycle": 50,
+            “clean glass": 5,
+            “washing tableware": 10,
+            “shower": 20
             
         }
+
+Translated with DeepL.com (free version)
         
         # Bot response logic
         bot_response = "Maaf, saya tidak mengerti. Coba jelaskan aktivitas Anda."
